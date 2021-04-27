@@ -1,4 +1,4 @@
-[![Codeship Status for tnguyen3645/articards](https://app.codeship.com/projects/8c2ac374-59f7-49a1-bcb9-b8e07b64e9a2/status?branch=master)](https://app.codeship.com/projects/442979)
+[![Codeship Status for tnguyen3645/articards](https://app.codeship.com/projects/8c2ac374-59f7-49a1-bcb9-b8e07b64e9a2/status?branch=main)](https://app.codeship.com/projects/442979)
 # README
 
 
