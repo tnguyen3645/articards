@@ -4,8 +4,6 @@ class CreateDecks < ActiveRecord::Migration[5.2]
       t.string :name, null: false
       t.integer :size, null: false
 
-      t.has_many :cards
-
       t.timestamps null: false
     end
   end
