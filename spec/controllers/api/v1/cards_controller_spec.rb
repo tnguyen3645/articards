@@ -21,7 +21,6 @@ RSpec.describe Api::V1::CardsController, type: :controller do
 
       get :index
       returned_json = JSON.parse(response.body)
-      binding.pry
 
       expect(response.status).to eq 200
       expect(response.content_type).to eq("application/json")
