@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+Card.create(name: "ship")
+Card.create(name: "boat")
+Card.create(name: "parachute")
+Card.create(name: "chicken")
+Card.create(name: "frog")
