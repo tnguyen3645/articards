@@ -15,13 +15,13 @@ RSpec.describe Api::V1::CardsController, type: :controller do
       get :index
       returned_json = JSON.parse(response.body)
 
-     expect(response.status).to eq 200
-     expect(response.content_type).to eq("application/json")
+      expect(response.status).to eq 200
+      expect(response.content_type).to eq("application/json")
 
-     expect(returned_json[0]["name"]).to eq "Parachute"
-     expect(returned_json[1]["name"]).to eq "Moose"
+      expect(returned_json["cards"][0]["name"]).to eq "Parachute"
+      expect(returned_json["cards"][1]["name"]).to eq "Moose"
 
-     expect(returned_json.length).to eq 2
+      expect(returned_json["cards"].length).to eq 2
     end
   end
 end
