@@ -1,5 +1,6 @@
 class CardSerializer < ActiveModel::Serializer
-  attributes :id, :name, :photo_path
+  attributes :id, :word, :photo_path, :user
 
-  belongs_to :deck
+  has_many :decks, through: :card_decks
+  belongs_to :user
 end

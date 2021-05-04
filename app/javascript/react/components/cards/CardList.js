@@ -6,7 +6,7 @@ const CardList = props => {
   const { cards } = props
 
   const cardList = cards.map(card => {
-    return <CardTile key={card.id} name={card.name} photo={card.photo_path} />
+    return <CardTile key={card.id} word={card.word} photo={card.photo_path} />
   })
 
   return (
