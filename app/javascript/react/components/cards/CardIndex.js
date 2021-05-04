@@ -4,6 +4,7 @@ import CardList from "./CardList"
 
 const CardIndex = props => {
   const [cards, setCards] = useState([])
+  const [userCards, setUserCards] = useState([])
 
   const fetchCards = async () => {
     try {
@@ -27,7 +28,17 @@ const CardIndex = props => {
 
   return (
     <div className="grid-container">
-      <div className="grid-x grid-margin-x">
+      <h1>Word Cards</h1>
+      <div className="search__container">
+        <p className="search__title">
+          Find a word card
+        </p>
+        <input className="search__input" type="text" placeholder="Search"></input>
+      </div>
+      <div>
+        <h2>My Word Cards</h2>
+        <CardList cards={userCards} />
+        <h2>All Word Cards</h2>
         <CardList cards={cards} />
       </div>
     </div>
