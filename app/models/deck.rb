@@ -1,6 +1,8 @@
 class Deck < ApplicationRecord
-  has_many :cards
+  belongs_to :user, optional: true
+
+  has_many :card_decks
+  has_many :cards, through: :card_decks
 
   validates :name, presence: true
-  validates :size, presence: true
 end

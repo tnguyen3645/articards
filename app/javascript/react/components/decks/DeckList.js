@@ -1,4 +1,5 @@
 import React from "react"
+import _ from "lodash"
 
 import DeckTile from "./DeckTile"
 
@@ -6,7 +7,15 @@ const DeckList = props => {
   const { decks } = props
 
   const deckList = decks.map(deck => {
-    return <DeckTile key={deck.id} name={deck.name} size={deck.size} />
+    const sampleWords = _.sampleSize(deck.cards, 3).map(card => card.word)
+    return (
+      <DeckTile
+        key={deck.id}
+        name={deck.name}
+        cardCount={deck.cards.length}
+        sampleWords={sampleWords}
+      />
+    )
   })
 
   return (
