@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react"
 
-import DeckTile from "./DeckTile"
+import DeckList from "./DeckList"
 
 const DeckIndex = props => {
   const [decks, setdecks] = useState([])
+  const [userDeckList, setUserDeckList] = useState([])
 
   const fetchdecks = async () => {
     try {
@@ -25,14 +26,20 @@ const DeckIndex = props => {
     fetchdecks()
   }, [])
 
-  const deckList = decks.map(deck => {
-    return <DeckTile key={deck.id} id={deck.id} name={deck.name} size={deck.size}/>
-  })
-
   return (
     <div className="grid-container">
-      <div className="grid-x grid-margin-x">
-        {deckList}
+      <h1>Word Decks</h1>
+      <div className="search__container">
+        <p className="search__title">
+          Find a word deck
+        </p>
+        <input className="search__input" type="text" placeholder="Search"></input>
+      </div>
+      <div>
+        <h2>My Word Decks</h2>
+        <DeckList decks={userDeckList} />
+        <h2>All Word Decks</h2>
+        <DeckList decks={decks} />
       </div>
     </div>
   )
