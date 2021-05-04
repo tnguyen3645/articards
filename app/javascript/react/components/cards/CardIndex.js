@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 
-import CardTile from "./CardTile"
+import CardList from "./CardList"
 
 const CardIndex = props => {
   const [cards, setCards] = useState([])
@@ -25,14 +25,10 @@ const CardIndex = props => {
     fetchCards()
   }, [])
 
-  const cardList = cards.map(card => {
-    return <CardTile key={card.id} name={card.name} photo={card.photo_path} />
-  })
-
   return (
     <div className="grid-container">
       <div className="grid-x grid-margin-x">
-        {cardList}
+        <CardList cards={cards} />
       </div>
     </div>
   )

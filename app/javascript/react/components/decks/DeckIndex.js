@@ -26,7 +26,7 @@ const DeckIndex = props => {
   }, [])
 
   const deckList = decks.map(deck => {
-    return <DeckTile key={deck.id} name={deck.name} size={deck.size} />
+    return <DeckTile key={deck.id} id={deck.id} name={deck.name} size={deck.size}/>
   })
 
   return (

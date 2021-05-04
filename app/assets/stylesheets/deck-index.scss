@@ -1,0 +1,14 @@
+@import 'colors';
+
+.deck-card {
+  border: 5px solid $navy-blue !important;
+  border-radius: 15px !important;
+  transition: border 0.1s ease-in;
+  cursor: pointer;
+  height: 20em !important;
+  text-align: center;
+
+  &:hover {
+    border: 8px solid $yellow !important;
+  }
+}
