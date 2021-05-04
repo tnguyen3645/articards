@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch} from "react-router-dom"
 
 import CardIndex from "./cards/CardIndex"
 import DeckIndex from "./decks/DeckIndex"
+import GameBoard from "./game/GameBoard"
 
 export const App = (props) => {
   return (
@@ -10,7 +11,8 @@ export const App = (props) => {
       <Switch>
         <Route exact path="/cards" component={CardIndex}/>
         <Route exact path="/decks" component={DeckIndex}/>
-        <Route path="/" component={CardIndex}/>
+        <Route exact path="/play/:id" component={GameBoard}/>
+        <Route path="/" component={DeckIndex}/>
       </Switch>
     </BrowserRouter>
   )

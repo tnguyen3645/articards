@@ -1,0 +1,18 @@
+@import 'colors';
+
+@font-face {
+  font-family: 'Caroni-Regular';
+  src: asset-path(Caroni-Regular) format("opentype");
+  src: font_url('Caroni-Regular.otf');
+}
+
+title {
+  color: $navy-blue !important;
+}
+
+h1, h2, h3 {
+  font-family: 'Caroni-Regular';
+  font-weight: bold;
+  color: $navy-blue;
+  text-align: center;
+}

@@ -1,0 +1,8 @@
+@import 'colors';
+
+.gameboard {
+  border: 0.5em solid $navy-blue;
+  background-color: $background;
+  border-radius: 1em !important;
+  padding: 2em;
+}
