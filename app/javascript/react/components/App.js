@@ -5,6 +5,7 @@ import CardIndex from "./cards/CardIndex"
 import DeckIndex from "./decks/DeckIndex"
 import GameBoard from "./game/GameBoard"
 import HomePage from "./HomePage"
+import NewDeckForm from "./decks/NewDeckForm"
 
 export const App = (props) => {
   return (
@@ -13,6 +14,7 @@ export const App = (props) => {
         <Route exact path="/cards" component={CardIndex}/>
         <Route exact path="/decks" component={DeckIndex}/>
         <Route exact path="/play" component={GameBoard}/>
+        <Route exact path="/decks/new" component={NewDeckForm}/>
         <Route path="/" component={HomePage}/>
       </Switch>
     </BrowserRouter>
