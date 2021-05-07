@@ -6,6 +6,45 @@
   src: font_url('ChildsHand.ttf');
 }
 
+.nav-container{
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #8ac4d0;
+  padding-left: 8%;
+  padding-right: 8%;
+}
+
+.navbar{
+  display: flex;
+  align-items: center;
+  padding-top: 2rem;
+  background-color: #8ac4d0;
+}
+
+.logo{
+  width: 5rem;
+  cursor: pointer;
+}
+
+nav{
+  flex: 1;
+  text-align: right;
+}
+
+nav ul li{
+  list-style: none;
+  display: inline-block;
+  margin-left: 4rem;
+
+  & a{
+    text-decoration: none;
+    color: $navy-blue;
+    font-size: 1rem;
+  }
+
+
+}
+
 title {
   color: $navy-blue !important;
 }
@@ -14,7 +53,6 @@ h1, h2, h3 {
   font-family: 'ChildsHand';
   font-weight: bold;
   color: #28527a;
-  text-align: center;
 }
 
 p {
