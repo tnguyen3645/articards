@@ -7,23 +7,25 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-  <nav class="top-bar">
-    <section>
-      <h1><a href="/">Articards</a></h1>
-      <p>A Matching & Memory Game</p>
-    </section>
-    <section class="top-bar-section">
-      <ul class="right">
-        <%- if current_user -%>
-          <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-        <%- else -%>
-          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-          <li><%= link_to 'Sign In', new_user_session_path %></li>
-        <%- end -%>
-      </ul>
-    </section>
-  </nav>
+  <div class="nav-container">
+    <div class="navbar">
+      <img src="" class="logo">
+      <nav>
+        <ul>
+          <li><a href="/">HOME</a></li>
+          <li><a href="/">ABOUT</a></li>
+          <li><a href="/decks">DECKS</a></li>
+          <li><a href="/cards">CARDS</a></li>
+          <%- if current_user -%>
+            <li class="login-button"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+          <%- else -%>
+            <li class="login-button"><%= link_to 'Sign Up', new_user_registration_path %></li>
+            <li class="login-button"><%= link_to 'Sign In', new_user_session_path %></li>
+          <%- end -%>
+        </ul>
+      </nav>
+    </div>
+  </div>
 
   <%- flash.each do |key, value| -%>
     <div class="flash flash-<%= key %>">
