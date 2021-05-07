@@ -23,7 +23,6 @@ const GameCardList = props => {
     )
   })
 
-
   return (
     <div className="grid-container">
       <div className="grid-x grid-margin-x">

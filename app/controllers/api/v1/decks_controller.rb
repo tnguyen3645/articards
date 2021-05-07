@@ -7,4 +7,31 @@ class Api::V1::DecksController < ApiController
     deck = Deck.find(params[:id])
     render json: deck
   end
+
+  def new
+  end
+
+  def create
+    deck = Deck.new(deck_params)
+    cards = []
+    cardIds = params["cardIds"]
+    cardIds.each do |cardId|
+      card = Card.find(cardId)
+      cards.push(card)
+    end
+    deck.cards = cards
+    deck.user = current_user
+
+    if deck.save
+      render json: deck
+    else
+      render json: { error: deck.errors.full_messages }
+    end
+  end
+
+  private
+
+  def deck_params
+    params.require(:deck).permit(:name, :cards, :user)
+  end
 end

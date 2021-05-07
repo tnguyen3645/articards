@@ -41,8 +41,11 @@ nav ul li{
     color: $navy-blue;
     font-size: 1rem;
   }
+}
 
-
+.center{
+  text-align: center;
+  margin: 0 auto;
 }
 
 title {
@@ -116,4 +119,10 @@ input {
 
 label {
   margin-bottom: 0.8rem !important;
+}
+
+.card {
+  &.selected{
+    border: 2px solid green !important;
+  }
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 
-import * as apiClient from "../../apiClient"
+import { fetchDecks } from "../../apiClient"
 import DeckList from "./DeckList"
 
 const DeckIndex = props => {
@@ -9,7 +9,7 @@ const DeckIndex = props => {
   const [userDeckList, setUserDeckList] = useState([])
 
   useEffect(() => {
-    apiClient.fetchDecks().then((parsedDeckData) => {
+    fetchDecks().then((parsedDeckData) => {
       setdecks(parsedDeckData)
     })
   }, [])

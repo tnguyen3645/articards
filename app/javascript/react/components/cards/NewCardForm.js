@@ -28,7 +28,6 @@ const NewCardForm = props => {
         }
       }
     })
-
     setErrors(submitErrors)
     return _.isEmpty(submitErrors)
   }
