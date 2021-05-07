@@ -6,10 +6,11 @@ Rails.application.routes.draw do
   get '/cards', to: 'homes#index'
   get '/decks', to: 'homes#index'
   get '/play', to: 'homes#index'
+  get '/decks/new', to: 'homes#index'
 
   namespace :api do
     namespace :v1 do
-      resources :decks, only: [:index, :show]
+      resources :decks, only: [:index, :show, :new, :create]
       resources :cards, only: [:index, :create]
     end
   end

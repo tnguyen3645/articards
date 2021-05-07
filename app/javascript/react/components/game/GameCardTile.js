@@ -14,11 +14,11 @@ const GameCardTile = (props) => {
 
   return (
     <div className="cell small-2">
-        <div id={id}  onClick={onClickHandler} >
-          <div className={flippedCard}>
-            <h3>{word}</h3>
-          </div>
+      <div id={id}  onClick={onClickHandler} >
+        <div className={flippedCard}>
+          <h3>{word}</h3>
         </div>
+      </div>
     </div>
   )
 }
