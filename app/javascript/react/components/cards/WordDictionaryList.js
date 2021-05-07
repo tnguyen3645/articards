@@ -12,7 +12,7 @@ const WordDictionaryList = props => {
 
   const dictionaryList = cards.map(card => {
     let isSelected = false
-    if (selectedCards.includes(card.id)) {
+    if (selectedCards.includes(card)) {
       isSelected = true
     }
     return (

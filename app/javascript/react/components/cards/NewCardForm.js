@@ -4,6 +4,7 @@ import makeAnimated from 'react-select/animated';
 import _ from "lodash"
 
 import ErrorList from "../ErrorList"
+import { fetchDecks } from "../../apiClient"
 
 const NewCardForm = props => {
   const { submittedHandler } = props
@@ -14,8 +15,14 @@ const NewCardForm = props => {
     decks: {}
   })
   const [errors, setErrors] = useState({})
-  const [decks, setdecks] = useState([])
+  const [decks, setDecks] = useState([])
   const [selectedDecks, setSelectedDecks] = useState([])
+
+  useEffect(() => {
+    fetchDecks().then((parsedDeckData) => {
+      setDecks(parsedDeckData)
+    })
+  }, [])
 
   const validFormSubmission = () => {
     let submitErrors = {}
@@ -51,26 +58,6 @@ const NewCardForm = props => {
       setSelectedDecks([])
     }
   }
-
-  const fetchdecks = async () => {
-    try {
-      const response = await fetch("/api/v1/decks")
-      if (!response.ok) {
-        const errorMessage = `${response.status} (${response.statusText})`
-        const error = new Error(errorMessage)
-        throw error
-      }
-      const responseBody = await response.json()
-      setdecks(responseBody.decks)
-    } catch (err) {
-      console.error("Error in fetch!")
-      console.error(err)
-    }
-  }
-
-  useEffect(() => {
-    fetchdecks()
-  }, [])
 
   const options = []
   for(let i=0; i < decks.length; i++){

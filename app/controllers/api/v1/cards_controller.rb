@@ -8,7 +8,7 @@ class Api::V1::CardsController < ApiController
     card.user = current_user
 
     if card.save
-      if params["decks"] != []
+      if params["decks"] != {}
         params["decks"].each do |deck|
           deck = Deck.find_by(name: deck["value"])
           CardDeck.create(card: card, deck: deck)
