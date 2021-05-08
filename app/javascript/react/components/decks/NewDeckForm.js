@@ -13,6 +13,7 @@ const NewDeckForm = props => {
   })
   const [selectedCards, setSelectedCards] = useState([])
   const [cards, setCards] = useState([])
+  const [searchQuery, setSearchQuery] = useState("")
   const [shouldRedirect, setShouldRedirect] = useState(false)
   const [errors, setErrors] = useState({})
 
@@ -95,6 +96,14 @@ const NewDeckForm = props => {
     return <Redirect push to="/decks" />
   }
 
+  const handleSearchInputChange = (event) => {
+    setSearchQuery(event.currentTarget.value)
+  }
+
+  const dynamicSearch = () => {
+    return cards.filter(card => card.word.toLowerCase().includes(searchQuery.toLowerCase()))
+  }
+
   return (
     <div className="grid-container form">
       <ErrorList errors={errors} />
@@ -110,10 +119,10 @@ const NewDeckForm = props => {
       </form>
       <h2>Select Words for Deck:</h2>
       <div className="search__container">
-        <input className="search__input" type="text" placeholder="Search"></input>
+        <input className="search__input" type="text" placeholder="Search" onChange={handleSearchInputChange}></input>
       </div>
       <div>
-        <WordDictionaryList cards={cards} selectedCards={selectedCards} selectCard={selectCard} />
+        <WordDictionaryList cards={dynamicSearch()} selectedCards={selectedCards} selectCard={selectCard} />
       </div>
     </div>
   )

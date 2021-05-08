@@ -29,3 +29,25 @@ export const fetchCards = async () => {
     console.error(err)
   }
 }
+
+export const postCard = async (formPayload) => {
+  try {
+    const response = await fetch("/api/v1/cards", {
+      credentials: "same-origin",
+      method: 'POST',
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(formPayload)
+    })
+    if (!response.ok) {
+      const errorMessage = `${response.status} (${response.statusText})`
+      throw new Error(errorMessage)
+    }
+    const responseBody = await response.json()
+    return responseBody.card
+  } catch (error) {
+    console.error(`Error in Fetch: ${error.message}`)
+  }
+}

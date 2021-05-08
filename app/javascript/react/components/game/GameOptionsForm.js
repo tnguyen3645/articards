@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import Select from "react-select"
 import _ from "lodash"
+import { fetchDecks } from "../../apiClient"
 
 const GameOptionsForm = props => {
   const { submittedHandler } = props
@@ -11,6 +12,12 @@ const GameOptionsForm = props => {
   })
   const [decks, setDecks] = useState([])
   const [selectedDeck, setSelectedDeck] = useState([])
+
+  useEffect(() => {
+    fetchDecks().then((parsedDeckData) => {
+      setDecks(parsedDeckData)
+    })
+  }, [])
 
   const handleDifficultyClick = event => {
     setGameOptions({
@@ -27,26 +34,6 @@ const GameOptionsForm = props => {
       ["deck"]: decks[deckIndex]
     })
   }
-
-  const fetchdecks = async () => {
-    try {
-      const response = await fetch("/api/v1/decks")
-      if (!response.ok) {
-        const errorMessage = `${response.status} (${response.statusText})`
-        const error = new Error(errorMessage)
-        throw error
-      }
-      const responseBody = await response.json()
-      setDecks(responseBody.decks)
-    } catch (err) {
-      console.error("Error in fetch!")
-      console.error(err)
-    }
-  }
-
-  useEffect(() => {
-    fetchdecks()
-  }, [])
 
   const options = []
   for(let i=0; i < decks.length; i++){
