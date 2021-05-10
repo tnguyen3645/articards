@@ -81,12 +81,13 @@ const NewCardForm = props => {
 
   return (
     <div className="callout card-form">
-      <h3>Add a new Card</h3>
+      <h3 className="center">Add a new Card</h3>
       <form className="form" onSubmit={onSubmitHandler}>
         <ErrorList errors={errors} />
         <label>
           Word:
           <input
+            className="center"
             type="text"
             name="word"
             placeholder="Enter word for card"
@@ -109,7 +110,7 @@ const NewCardForm = props => {
             classNamePrefix="select"
           />
         </label>
-        <input className="button" type="submit" value="Submit" />
+        <input className="action-button" type="submit" value="Submit" />
       </form>
     </div>
   )

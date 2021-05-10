@@ -110,15 +110,18 @@ const GameBoard = props => {
   }, [flippedCards, completedCards, countFlips])
 
   return (
-    <div className="grid-container">
-      <GameOptionsForm submittedHandler={submittedHandler}/>
-      <div className="gameboard-headers">
-        <h2>Cards Flipped: {countFlips}</h2>
-      </div>
-      <div className="gameboard">
-        <GameCardList cards={gameCards} cardClick={cardClick}/>
+    <div className="page-container">
+      <div className="grid-container">
+        <GameOptionsForm submittedHandler={submittedHandler}/>
+        <div className="gameboard-headers">
+          <h2>Cards Flipped: {countFlips}</h2>
+        </div>
+        <div className="gameboard">
+          <GameCardList cards={gameCards} cardClick={cardClick}/>
+        </div>
       </div>
     </div>
+
   )
 }
 

@@ -5,16 +5,17 @@ const DeckTile = (props) => {
 
   return (
     <div className="cell small-6 medium-4">
-        <div className="card deck-card">
-            <h1>{name}</h1>
-            <div className="card-section deck-card-section">
-              <h3>Number of Cards: {cardCount}</h3>
-              <h3>Example words: {sampleWords.join(", ")}</h3>
+        <div className="deck-card">
+            <h1 className="center card-heading">{name}</h1>
+            <div className="deck-card-section">
+              <p className="card-text">Number of Cards: {cardCount}</p>
+              <p className="card-text">Example words:</p>
+              <p className="card-text">{sampleWords.join(", ")}</p>
             </div>
             <div className="card-section deck-card-section">
               <span>
-                <button className="button alert">Edit Deck</button>
-                <button className="button alert">Play!</button>
+                <button className="card-button">Play!</button>
+                <button className="card-button">Edit Deck</button>
               </span>
             </div>
           </div>

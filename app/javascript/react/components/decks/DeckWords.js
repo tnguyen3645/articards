@@ -11,7 +11,7 @@ const DeckWords = props => {
   return (
     <div className="word-container center">
       <ul>
-        <li>{selectedWords.join(", ")}</li>
+        <li className="word-list">{selectedWords.join(", ")}</li>
       </ul>
     </div>
   )

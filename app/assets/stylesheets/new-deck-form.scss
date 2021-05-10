@@ -1,4 +1,16 @@
+@import "colors";
+
 .word-container {
-  width: 100%;
-  border: 1px solid black;
+  width: 75%;
+  border: 2px solid $navy-blue;
+  margin-bottom: 1rem;
+}
+
+.word-list {
+  list-style: none;
+  color: $navy-blue;
+  font-family: "ChildsHand";
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-align: center;
 }
