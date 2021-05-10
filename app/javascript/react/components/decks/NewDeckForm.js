@@ -105,26 +105,28 @@ const NewDeckForm = props => {
   }
 
   return (
-    <div className="grid-container form">
-      <ErrorList errors={errors} />
-      <form onSubmit={onSubmitHandler}>
-        <label>Deck Name:
-          <input type="text" name="name" placeholder="Enter deck name" onChange={handleInputChange}></input>
-        </label>
-        <div className="deck-words center">
-          <h2>Words in Deck:</h2>
-          <DeckWords selectedCards={selectedCards} />
+    <div className="page-container">
+      <div className="grid-container">
+        <ErrorList errors={errors} />
+        <form onSubmit={onSubmitHandler}>
+          <h1 className="center">Deck Name:</h1>
+          <input className="center" type="text" name="name" placeholder="Enter deck name" onChange={handleInputChange}></input>
+          <div className="deck-words center">
+            <h1>Words in Deck:</h1>
+            <DeckWords selectedCards={selectedCards} />
+          </div>
+          <input className="action-button" type="submit" value="Create new deck"></input>
+        </form>
+        <h2>Select Words for Deck:</h2>
+        <div className="search__container">
+          <input className="search__input" type="text" placeholder="Search" onChange={handleSearchInputChange}></input>
         </div>
-        <input type="submit" className="button" value="Create new deck"></input>
-      </form>
-      <h2>Select Words for Deck:</h2>
-      <div className="search__container">
-        <input className="search__input" type="text" placeholder="Search" onChange={handleSearchInputChange}></input>
-      </div>
-      <div>
-        <WordDictionaryList cards={dynamicSearch()} selectedCards={selectedCards} selectCard={selectCard} />
+        <div>
+          <WordDictionaryList cards={dynamicSearch()} selectedCards={selectedCards} selectCard={selectCard} />
+        </div>
       </div>
     </div>
+
   )
 }
 

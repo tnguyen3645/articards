@@ -16,7 +16,7 @@ const DictionaryTile = props => {
     <div className="cell small-6 medium-2">
       <div id={id} className={selectedClass} onClick={onClickHandler}>
         <div className="card-section">
-          <h3>{word}</h3>
+          <h3 className="center">{word}</h3>
         </div>
       </div>
     </div>

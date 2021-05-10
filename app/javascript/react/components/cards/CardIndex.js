@@ -30,26 +30,27 @@ const CardIndex = props => {
   }
 
   return (
-    <div className="grid-container">
-      <div className="grid-x">
-        <div className="cell small-12 medium-4">
-          <h1>Word Cards</h1>
-          <div className="search__container">
-            <p className="search__title">
-              Search for a word card
-            </p>
-            <input className="search__input" type="text" placeholder="Search" onChange={handleSearchInputChange}></input>
+    <div className="page-container">
+      <div className="grid-container">
+        <div className="grid-x">
+          <div className="cell small-12 medium-4">
+            <h1 className="center page-header">Word Cards</h1>
+            <div className="search__container">
+              <p className="search__title">Search for a word card</p>
+              <input className="search__input" type="text" placeholder="Search" onChange={handleSearchInputChange}></input>
+            </div>
+            <NewCardForm submittedHandler={submittedHandler}/>
           </div>
-          <NewCardForm submittedHandler={submittedHandler}/>
-        </div>
-        <div className="cell small-12 medium-8">
-          <h2>My Word Cards</h2>
-          <CardList cards={userCards} />
-          <h2>All Word Cards</h2>
-          <CardList cards={dynamicSearch()} />
+          <div className="cell small-12 medium-8">
+            <h2 className="center page-header">My Word Cards</h2>
+            <CardList cards={userCards} />
+            <h2 className="center page-header">All Word Cards</h2>
+            <CardList cards={dynamicSearch()} />
+          </div>
         </div>
       </div>
     </div>
+
   )
 }
 
