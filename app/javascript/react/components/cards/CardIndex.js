@@ -3,21 +3,33 @@ import React, { useState, useEffect } from "react"
 import CardList from "./CardList"
 import NewCardForm from "./NewCardForm"
 import { fetchCards, postCard } from "../../apiClient"
+import getCurrentUser from "../../getCurrentUser"
 
 const CardIndex = props => {
+  const [currentUser, setCurrentUser] = useState(null)
   const [cards, setCards] = useState([])
   const [userCards, setUserCards] = useState([])
   const [searchQuery, setSearchQuery] = useState("")
 
   useEffect(() => {
-    fetchCards().then((parsedDeckData) => {
-      setCards(parsedDeckData)
+    fetchCards().then((parsedCardData) => {
+      setCards(parsedCardData)
+    })
+  }, [])
+
+  useEffect(() => {
+    getCurrentUser().then(user => {
+      if (user != undefined) {
+        setCurrentUser(user)
+        setUserCards(user.cards)
+      }
     })
   }, [])
 
   const submittedHandler = card => {
     postCard(card).then((parsedCardData) => {
       setCards(cards => cards.concat(parsedCardData))
+      setUserCards(cards => cards.concat(parsedCardData))
     })
   }
 
@@ -27,6 +39,15 @@ const CardIndex = props => {
 
   const dynamicSearch = () => {
     return cards.filter(card => card.word.toLowerCase().includes(searchQuery.toLowerCase()))
+  }
+
+  let userMessage
+  let cardForm
+  if (currentUser === null) {
+    userMessage = <p>Log in to see and create your own custom word cards!</p>
+  } else {
+    userMessage = <CardList cards={userCards} />
+    cardForm = <NewCardForm submittedHandler={submittedHandler}/>
   }
 
   return (
@@ -39,11 +60,11 @@ const CardIndex = props => {
               <p className="search__title">Search for a word card</p>
               <input className="search__input" type="text" placeholder="Search" onChange={handleSearchInputChange}></input>
             </div>
-            <NewCardForm submittedHandler={submittedHandler}/>
+            {cardForm}
           </div>
           <div className="cell small-12 medium-8">
             <h2 className="center page-header">My Word Cards</h2>
-            <CardList cards={userCards} />
+            {userMessage}
             <h2 className="center page-header">All Word Cards</h2>
             <CardList cards={dynamicSearch()} />
           </div>
