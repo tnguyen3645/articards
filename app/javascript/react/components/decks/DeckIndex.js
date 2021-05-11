@@ -12,15 +12,19 @@ const DeckIndex = props => {
   const [searchQuery, setSearchQuery] = useState("")
 
   useEffect(() => {
-    fetchDecks().then((parsedDeckData) => {
-      setDecks(parsedDeckData)
-      getCurrentUser().then(user => {
-        if (user != undefined) {
-          setCurrentUser(user)
-          setUserDecks(user.decks)
+    fetchDecks()
+      .then((parsedDeckData) => {
+        setDecks(parsedDeckData)
+      })
+      .then(() => {
+        return getCurrentUser()
+      })
+      .then((userData) => {
+        if (userData != undefined) {
+          setCurrentUser(userData)
+          setUserDecks(userData.decks)
         }
       })
-    })
   }, [])
 
   const handleSearchInputChange = (event) => {
@@ -37,7 +41,7 @@ const DeckIndex = props => {
     userMessage = <p>Log in to see your word decks!</p>
     createButton = <Link to="/users/sign_in" className="action-button">Log in to create a custom deck!</Link>
   } else {
-    userMessage = <DeckList decks={userDecks} />
+    userMessage = <DeckList decks={userDecks} currentUser={currentUser}/>
     createButton = <Link to="/decks/new" className="action-button">Create a new deck!</Link>
   }
 
@@ -57,7 +61,7 @@ const DeckIndex = props => {
             <h2 className="center page-header">My Word Decks</h2>
             {userMessage}
             <h2 className="center page-header">All Word Decks</h2>
-            <DeckList decks={dynamicSearch()} currentUser={currentUser} userDecks={userDecks}/>
+            <DeckList decks={dynamicSearch()} currentUser={currentUser} />
           </div>
         </div>
       </div>

@@ -1,11 +1,13 @@
 import React from 'react'
 
 const DeckTile = (props) => {
-  const { id, name, cardCount, sampleWords, currentUser, deckUser } = props
+  const { name, cardCount, sampleWords, currentUser, deckUser } = props
 
   let editButton
-  if (currentUser != null && deckUser === currentUser) {
-    editButton = <button className="card-button">Edit Deck</button>
+  if (currentUser != null && deckUser != null) {
+    if (deckUser.id === currentUser.id) {
+      editButton = <button className="card-button">Edit Deck</button>
+    }
   }
 
   return (

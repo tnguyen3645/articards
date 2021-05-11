@@ -9,6 +9,8 @@ const DeckList = props => {
   const deckList = decks.map(deck => {
     const sampleWords = _.sampleSize(deck.cards, 3).map(card => card.word)
 
+
+
     return (
       <DeckTile
         key={deck.id}
