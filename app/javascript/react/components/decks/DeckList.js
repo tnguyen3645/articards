@@ -7,20 +7,22 @@ const DeckList = props => {
   const { decks, currentUser } = props
 
   const deckList = decks.map(deck => {
-    const sampleWords = _.sampleSize(deck.cards, 3).map(card => card.word)
+    if (deck.user === null) {
+      const sampleWords = _.sampleSize(deck.cards, 3).map(card => card.word)
 
-
-
-    return (
-      <DeckTile
-        key={deck.id}
-        name={deck.name}
-        cardCount={deck.cards.length}
-        sampleWords={sampleWords}
-        deckUser={deck.user}
-        currentUser={currentUser}
-      />
-    )
+      return (
+        <DeckTile
+          key={deck.id}
+          name={deck.name}
+          cardCount={deck.cards.length}
+          sampleWords={sampleWords}
+          deckUser={deck.user}
+          currentUser={currentUser}
+        />
+      )
+    } else {
+      return
+    }
   })
 
   return (
