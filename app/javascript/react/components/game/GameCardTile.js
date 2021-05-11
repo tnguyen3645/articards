@@ -3,9 +3,11 @@ import React from 'react'
 const GameCardTile = (props) => {
   const { id, word, photo, isFlipped, cardClickHandler} = props
 
-  let flippedCard = "card-section default"
+  let flippedCard = "card-section default gamecard"
+  let cardText = <h3 className="center gamecard-text">Articards</h3>
   if (isFlipped) {
-    flippedCard = "card-section flipped"
+    flippedCard = "card-section flipped gamecard"
+    cardText = <h3 className="center gamecard-text flipped-word">{word}</h3>
   }
 
   const onClickHandler = event => {
@@ -16,7 +18,7 @@ const GameCardTile = (props) => {
     <div className="cell small-2">
       <div id={id}  onClick={onClickHandler} >
         <div className={flippedCard}>
-          <h3>{word}</h3>
+          {cardText}
         </div>
       </div>
     </div>
