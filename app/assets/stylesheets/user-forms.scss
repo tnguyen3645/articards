@@ -1,0 +1,26 @@
+@import "colors";
+
+.form-field {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.form-label {
+  margin: 0 auto !important;
+}
+
+.remember-me {
+  display: inline-block;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.field {
+  align-items: center !important;
+}
+
+.user-form {
+  width: 80%;
+  margin: 0 auto;
+  border: 3px solid $navy-blue
+}

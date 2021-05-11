@@ -44,7 +44,7 @@ const CardIndex = props => {
   let userMessage
   let cardForm
   if (currentUser === null) {
-    userMessage = <p>Log in to see and create your own custom word cards!</p>
+    userMessage = <p className="user-message center">Log in to see and create your own custom word cards!</p>
   } else {
     userMessage = <CardList cards={userCards} />
     cardForm = <NewCardForm submittedHandler={submittedHandler}/>

@@ -13,14 +13,14 @@
       <nav>
         <ul>
           <li><a href="/">HOME</a></li>
-          <li><a href="/">ABOUT</a></li>
+          <li><a href="/play">PLAY</a></li>
           <li><a href="/decks">DECKS</a></li>
           <li><a href="/cards">CARDS</a></li>
           <%- if current_user -%>
             <li class="login-button"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
           <%- else -%>
-            <li class="login-button"><%= link_to 'Sign Up', new_user_registration_path %></li>
-            <li class="login-button"><%= link_to 'Sign In', new_user_session_path %></li>
+            <li class="login-button sign-up"><%= link_to 'Sign Up', new_user_registration_path %></li>
+            <li class="login-button sign-in"><%= link_to 'Sign In', new_user_session_path %></li>
           <%- end -%>
         </ul>
       </nav>

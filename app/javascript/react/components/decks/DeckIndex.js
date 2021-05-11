@@ -38,7 +38,7 @@ const DeckIndex = props => {
   let userMessage
   let createButton
   if (currentUser === null) {
-    userMessage = <p>Log in to see your word decks!</p>
+    userMessage = <p className="user-message center">Log in to see your word decks!</p>
     createButton = <Link to="/users/sign_in" className="action-button">Log in to create a custom deck!</Link>
   } else {
     userMessage = <DeckList decks={userDecks} currentUser={currentUser}/>

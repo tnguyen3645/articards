@@ -23,7 +23,8 @@
   width: 10rem;
   color: $yellow;
   font-weight: bold;
-  font-size: 1rem;
+  font-family: "ChildsHand";
+  font-size: 1.5rem;
   padding: 1rem 1rem;
   background-color: $navy-blue;
   border-radius: 15px;
@@ -32,7 +33,7 @@
   &:hover{
     background-color: $yellow;
     color: $navy-blue;
-    font-size: 1.03rem;
+    font-size: 1.53rem;
   }
 }
 
@@ -50,4 +51,27 @@
 
   &.flipped{
   }
+}
+
+.sign-up {
+  width: 7rem;
+  border: 2px solid $red-orange;
+  border-radius: 1rem;
+  transition: border 0.1s ease-in;
+  text-align: center;
+  padding: 0.2rem;
+  background-color: $red-orange;
+
+  &:hover {
+    border: 2px solid $yellow;
+    color: $yellow !important;
+  }
+}
+
+.sign-in {
+  margin-left: 1rem !important;
+}
+
+.home-title {
+  font-size: 5rem;
 }
