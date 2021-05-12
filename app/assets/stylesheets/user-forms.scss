@@ -48,3 +48,14 @@
   margin: 0 auto;
   border: 3px solid $navy-blue
 }
+
+.error-message {
+  font-family: "ChildsHand";
+  font-size: 1.2rem;
+  font-weight: bold;
+  list-style: none;
+}
+
+.error-header {
+  font-size: 1.8rem !important;
+}
