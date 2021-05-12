@@ -8,8 +8,6 @@ const GameBoard = props => {
   const [flippedCards, setFlippedCards] = useState([])
   const [completedCards, setCompletedCards] = useState([])
   const [countFlips, setCountFlips] = useState(0)
-  const [isActive, setIsActive] = useState(false)
-  const [time, setTime] = useState(0)
 
   const submittedHandler = (gameOptions) => {
     setFlippedCards([])
@@ -19,7 +17,6 @@ const GameBoard = props => {
     let difficulty = gameOptions.difficulty
     let boardCards = difficultySetting(difficulty, deckCards)
     setGameCards(duplicateCards(boardCards))
-    setIsActive(true)
   }
 
   const difficultySetting = (difficulty, cards) => {
