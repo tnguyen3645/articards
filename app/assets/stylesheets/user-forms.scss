@@ -3,10 +3,34 @@
 .form-field {
   text-align: center;
   margin: 0 auto;
+  margin-bottom: 1rem;
 }
 
 .form-label {
   margin: 0 auto !important;
+}
+
+.form-header {
+  margin-bottom: 1rem;
+}
+
+.form-button {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  color: $navy-blue;
+  border: 1px solid $red-orange;
+  background-color: $red-orange;
+  width: 6rem;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  cursor: pointer;
+
+  &:hover {
+    color: $yellow;
+    border: 2px solid $yellow;
+
+  }
 }
 
 .remember-me {
