@@ -36,10 +36,12 @@ const DeckIndex = props => {
   }
 
   let userMessage
+  let createButton
   if (currentUser === null) {
     userMessage = <p className="user-message center">Log in to see and create your own word decks!</p>
   } else {
     userMessage = <DeckList decks={userDecks} currentUser={currentUser}/>
+    createButton = <Link to="/decks/new" className="action-button">Create a new deck!</Link>
   }
 
   return (
@@ -52,6 +54,7 @@ const DeckIndex = props => {
               <p className="search__title">Find a word deck</p>
               <input className="search__input" type="text" placeholder="Search" onChange={handleSearchInputChange}></input>
             </div>
+            {createButton}
           </div>
           <div className="cell small-3 medium-8">
             <h2 className="center page-header">My Word Decks</h2>
