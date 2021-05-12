@@ -73,7 +73,7 @@ label {
   font-weight: bolder;
   font-size: 1.5rem;
 
-  &:focus {
+  &.difficulty-selected {
     background-color: $yellow;
     color: $navy-blue;
   }

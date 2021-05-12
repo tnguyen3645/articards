@@ -8,7 +8,7 @@ const ErrorList = props => {
     const listItems = errantFields.map(field => {
       index++
       return (
-        <li key={index}>
+        <li key={index} className="error-alert">
           {_.capitalize(field)} {props.errors[field]}
         </li>
       )
