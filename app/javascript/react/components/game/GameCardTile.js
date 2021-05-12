@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactCardFlip from 'react-card-flip';
 
 const GameCardTile = (props) => {
   const { id, word, photo, isFlipped, cardClickHandler} = props
@@ -16,11 +17,19 @@ const GameCardTile = (props) => {
 
   return (
     <div className="cell small-2">
-      <div id={id}  onClick={onClickHandler} >
-        <div className={flippedCard}>
-          {cardText}
+      <ReactCardFlip isFlipped={isFlipped} >
+        <div id={id}  onClick={onClickHandler} >
+          <div className="card-section default gamecard">
+            <h3 className="center gamecard-text">Articards</h3>
+          </div>
         </div>
-      </div>
+
+        <div id={id} onClick={onClickHandler} >
+          <div className="card-section flipped gamecard">
+            <h3 className="center gamecard-text flipped-word">{word}</h3>
+          </div>
+        </div>
+      </ReactCardFlip>
     </div>
   )
 }
