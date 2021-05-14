@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { BrowserRouter, Route, Switch } from "react-router-dom"
 
 import CardIndex from "./cards/CardIndex"
@@ -6,17 +6,17 @@ import DeckIndex from "./decks/DeckIndex"
 import GameBoard from "./game/GameBoard"
 import HomePage from "./HomePage"
 import NewDeckForm from "./decks/NewDeckForm"
-import getCurrentUser from "../getCurrentUser"
+import StartGame from "./game/StartGame"
 
-export const App = (props) => {
-
+export const App = props => {
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path="/cards" component={CardIndex} />
         <Route exact path="/decks" component={DeckIndex} />
-        <Route exact path="/play" component={GameBoard} />
+        <Route exact path="/play" component={StartGame} />
         <Route exact path="/decks/new" component={NewDeckForm} />
+        <Route exact path="/games/:id" component={GameBoard} />
         <Route path="/" component={HomePage} />
       </Switch>
     </BrowserRouter>
