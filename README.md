@@ -5,7 +5,7 @@ Articards is a simple memory and matching game for creating custom learning sess
 
 Check out Articards [here](https://articards.herokuapp.com/) on Heroku. Feel free to make an account and create your own custom words and decks!
 
-# Running Articards Locally
+## Running Articards Locally
 To run Articards on your machine:
 
 You will need to have installed:
@@ -20,7 +20,7 @@ You will need to have installed:
 5. In one terminal window, run `bundle exec rails s`. In a separate window, run `yarn start`.
 6. Navigate to localhost:3000 to see the website locally.
 
-# Guidelines on how to contribute
+## Guidelines on how to contribute
 Please follow the "fork-and-pull" Git workflow.
 
 1. Fork the repo on GitHub
@@ -31,7 +31,7 @@ Please follow the "fork-and-pull" Git workflow.
 
 NOTE: Be sure to merge the latest from "main" before making a pull request!
 
-# Features in Progress
+## Features in Progress
 Articards is a fully functional tool for speech therapy online sessions, however, there are more features coming, including:
 
 - Ability to add images to word cards
@@ -45,6 +45,6 @@ Fixes are in progress for these known issues:
 - When joining an in progress game, a user needs to click on a card before the game board loads.
 - There can be duplicate cards and decks.
 
-## Other Notes
+### Other Notes
 - Search Bar template from [Mihael Tomić](https://codepen.io/mihaeltomic)
 - Thank you to the Launch Academy Staff (Nick Alberts, Kaylyn Dicaccio, Kerrin Gillis) for their support in development
