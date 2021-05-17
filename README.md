@@ -47,4 +47,4 @@ Fixes are in progress for these known issues:
 
 ### Other Notes
 - Search Bar template from [Mihael Tomić](https://codepen.io/mihaeltomic)
-- Thank you to the Launch Academy Staff (Nick Alberts, Kaylyn Dicaccio, Kerrin Gillis) for their support in development
+- Thank you to the Launch Academy Staff (Nick Alberts, Kaylyn Diciaccio, Kerrin Gillis) for their support in development
