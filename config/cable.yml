@@ -6,5 +6,5 @@ test:
 
 production:
   adapter: redis
-  url: redis://redistogo:8cee90a737abad34da090da0637abf61@scat.redistogo.com:10530/
+  url: <%= ENV.fetch("REDISTOGO_URL") %>
   channel_prefix: articards_production
