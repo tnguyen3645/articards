@@ -65,4 +65,65 @@ RSpec.describe Api::V1::DecksController, type: :controller do
       expect(returned_json["decks"][1]["cards"][1]["word"]).to eq "shears"
     end
   end
+
+  describe "GET#show" do
+    it "should return an individual deck with all its attributes" do
+      get :show, params: {id: deck1.id}
+      returned_json = JSON.parse(response.body)
+
+      expect(response.status).to eq 200
+      expect(response.content_type).to eq("application/json")
+
+      expect(returned_json["deck"].length).to eq 5
+      expect(returned_json["deck"]["name"]).to eq deck1.name
+      expect(returned_json["deck"]["user"]).to be_nil
+
+      expect(returned_json["deck"]["cards"].length).to eq 2
+      expect(returned_json["deck"]["cards"][0]["word"]).to eq "cat"
+      expect(returned_json["deck"]["cards"][1]["word"]).to eq "car"
+
+      expect(returned_json["deck"]["games"].length).to eq 0
+    end
+  end
+
+  describe "POST#create" do
+    it "creates a new deck" do
+      post_json = {
+        deck: {
+          name: "Initial P"
+        },
+        cardIds: [card1.id, card2.id]
+      }
+
+      prev_count = Deck.count
+      post(:create, params: post_json, format: :json)
+      expect(Deck.count).to eq(prev_count + 1)
+    end
+
+    it "returns the json of the newly created deck" do
+      post_json = {
+        deck: {
+          name: "Initial P"
+        },
+        cardIds: [card1.id, card2.id]
+      }
+
+      post(:create, params: post_json, format: :json)
+      returned_json = JSON.parse(response.body)
+
+      expect(response.status).to eq 200
+      expect(response.content_type).to eq("application/json")
+
+      expect(returned_json["deck"]).to be_kind_of(Hash)
+      expect(returned_json["deck"]).to_not be_kind_of(Array)
+      expect(returned_json["deck"]["name"]).to eq "Initial P"
+      expect(returned_json["deck"]["user"]).to be_nil
+
+      expect(returned_json["deck"]["cards"].length).to eq 2
+      expect(returned_json["deck"]["cards"][0]["word"]).to eq "cat"
+      expect(returned_json["deck"]["cards"][1]["word"]).to eq "car"
+
+      expect(returned_json["deck"]["games"].length).to eq 0
+    end
+  end
 end
