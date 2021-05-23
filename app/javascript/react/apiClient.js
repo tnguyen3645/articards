@@ -51,3 +51,17 @@ export const postCard = async (formPayload) => {
     console.error(`Error in Fetch: ${error.message}`)
   }
 }
+
+export const fetchGame = async (gameRoomCode) => {
+  try {
+    const response = await fetch(`/api/v1/games/${gameRoomCode}`)
+    if (!response.ok) {
+      const errorMessage = `${response.status} (${response.statusText})`
+      throw new Error(errorMessage)
+    }
+    const responseBody = await response.json()
+    return responseBody["games"][0]
+  } catch(error) {
+      console.error(`Error in Fetch: ${error.message}`)
+  }
+}

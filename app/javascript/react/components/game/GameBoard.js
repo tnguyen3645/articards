@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react"
 
 import GameCardList from "../game/GameCardList"
+import { fetchGame } from "../../apiClient"
+import { checkFlipped, difficultySetting, duplicateCards, checkAlreadyFlipped, checkMatch } from "../game/GameLogic"
 
 const GameBoard = props => {
   const [gameCards, setGameCards] = useState([])
@@ -11,24 +13,10 @@ const GameBoard = props => {
 
   const gameRoomCode = props.match.params.id
 
-  const fetchGame = async () => {
-    try {
-      const response = await fetch(`/api/v1/games/${gameRoomCode}`)
-      if (!response.ok) {
-        const errorMessage = `${response.status} (${response.statusText})`
-        throw new Error(errorMessage)
-      }
-      const responseBody = await response.json()
-      return responseBody["games"][0]
-    } catch(error) {
-        console.error(`Error in Fetch: ${error.message}`)
-    }
-  }
-
   useEffect(() => {
     let gameRoomCode = props.match.params.id
 
-    fetchGame()
+    fetchGame(gameRoomCode)
       .then((parsedGameData) => {
         let boardCards = difficultySetting(parsedGameData.difficulty, parsedGameData.deck.cards)
         setGameCards(duplicateCards(boardCards))
@@ -88,49 +76,6 @@ const GameBoard = props => {
 
   if (stateUpdateFinished) {
     sendGameState()
-  }
-
-  const difficultySetting = (difficulty, cards) => {
-    let shuffledCards = [...cards].sort(() => Math.random() - 0.5)
-    if (cards.length < difficulty) {
-      return cards
-    } else {
-      return shuffledCards.splice(0, difficulty)
-    }
-  }
-
-  const duplicateCards = (cards) => {
-    let boardCards = []
-    for(let i=0; i < cards.length; i++){
-      let newGameCard = {
-        id: '_' + Math.random().toString(36).substr(2, 9),
-        word: cards[i]["word"],
-        photo: cards[i]["photo_path"],
-        isFlipped: false
-      }
-      let newGameCardDuplicate = {
-        id: '_' + Math.random().toString(36).substr(2, 9),
-        word: cards[i]["word"],
-        photo: cards[i]["photo_path"],
-        isFlipped: false
-      }
-      boardCards.push(newGameCard)
-      boardCards.push(newGameCardDuplicate)
-    }
-    boardCards.sort(() => Math.random() - 0.5)
-    return boardCards
-  }
-
-  const checkFlipped = (flippedCards) => {
-    return flippedCards.length === 2
-  }
-
-  const checkAlreadyFlipped = (flippedCards, card) => {
-    return flippedCards.length === 1 && flippedCards[0].id === card.id
-  }
-
-  const checkMatch = (flippedCards) => {
-    return flippedCards.length === 2 && flippedCards[0].word === flippedCards[1].word
   }
 
   const resetFlipped = (time) => {
