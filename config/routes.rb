@@ -15,8 +15,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :decks, only: [:index, :show, :new, :create]
       resources :cards, only: [:index, :create]
-      resources :current_users, only: [:index]
       resources :games, only: [:create, :show]
+      get "users/current" => "users#current"
     end
   end
 end
