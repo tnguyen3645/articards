@@ -1,4 +1,4 @@
-class CurrentUserSerializer < ActiveModel::Serializer
+class UserSerializer < ActiveModel::Serializer
   attributes :id, :email, :decks, :cards
 
   has_many :cards
