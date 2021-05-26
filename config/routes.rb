@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/cards', to: 'homes#index'
   get '/decks', to: 'homes#index'
   get '/play', to: 'homes#index'
+  get '/about', to: 'homes#index'
   get '/decks/new', to: 'homes#index'
   get '/games/:id', to: 'homes#index'
 
