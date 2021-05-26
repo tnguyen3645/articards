@@ -14,11 +14,6 @@ body {
   background-color: $light-blue;
 }
 
-footer {
-  background-color: $navy-blue;
-  text-align: center;
-}
-
 .nav-container{
   width: 100%;
   box-sizing: border-box;
@@ -208,4 +203,43 @@ label {
   list-style: none !important;
   font-family: "ChildsHand";
   font-size: 1.5rem;
+}
+
+footer {
+  background-color: $light-blue;
+  text-align: center;
+}
+
+.footer-text {
+  font-size: 1.2rem;
+  margin-bottom: 0 !important;
+}
+
+.footer-email {
+  font-size: 1.2rem;
+  color: $navy-blue !important;
+  font-weight: bold;
+
+  &:hover {
+    color:  $yellow !important;
+  }
+}
+
+ion-icon {
+  font-size: 32px;
+  color: black;
+  margin-right: 0.2rem;
+  margin-top: 1rem;
+
+  &.react-logo {
+    font-size: 1.2rem !important;
+  }
+
+  &.footer-icon {
+    color: $navy-blue;
+
+    &:hover {
+      color: $yellow;
+    }
+  }
 }
