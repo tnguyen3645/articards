@@ -76,28 +76,3 @@
 .home-header {
   margin-bottom: 2rem;
 }
-
-
-.footer {
-  background-color: $light-blue;
-  text-align: center;
-}
-
-.footer-text {
-  font-size: 1.2rem;
-}
-
-.footer-email {
-  font-size: 1.2rem;
-  color: black !important;
-}
-
-ion-icon {
-  font-size: 32px;
-  color: black;
-  margin-right: 0.2rem;
-
-  &:hover {
-    color: $navy-blue;
-  }
-}

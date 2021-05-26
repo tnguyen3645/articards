@@ -204,3 +204,37 @@ label {
   font-family: "ChildsHand";
   font-size: 1.5rem;
 }
+
+footer {
+  background-color: $light-blue;
+  text-align: center;
+}
+
+.footer-text {
+  font-size: 1.2rem;
+  margin-bottom: 0 !important;
+}
+
+.footer-email {
+  font-size: 1.2rem;
+  color: black !important;
+
+  &:hover {
+    color:  $yellow !important;
+  }
+}
+
+ion-icon {
+  font-size: 32px;
+  color: black;
+  margin-right: 0.2rem;
+  margin-top: 1rem;
+
+  &.footer-icon {
+    color: $navy-blue;
+
+    &:hover {
+      color: $yellow;
+    }
+  }
+}

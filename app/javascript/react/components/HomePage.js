@@ -21,14 +21,6 @@ const HomePage = props => {
           </div>
         </div>
       </div>
-      <footer className="footer">
-        <div className="centered">
-          <p className="footer-text"> Made with <ion-icon name="logo-react"></ion-icon> by Tony Nguyen 2021</p>
-          <a href="https://www.linkedin.com/in/tonynguyen3645/"><ion-icon className="footer-icon" name="logo-linkedin"></ion-icon></a>
-          <a href="https://github.com/tnguyen3645"><ion-icon className="footer-icon" name="logo-github"></ion-icon></a>
-          <p className="footer-email"><a className="footer-email" href="mailto:tonynguyen3645@gmail.com">tonynguyen3645@gmail.com</a></p>
-        </div>
-      </footer>
     </div>
   )
 }
