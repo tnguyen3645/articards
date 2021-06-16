@@ -4,7 +4,7 @@ import _ from "lodash"
 import DeckTile from "./DeckTile"
 
 const DeckList = props => {
-  const { decks, currentUser } = props
+  const { decks, currentUser, deleteDeck } = props
 
   const deckList = decks.map(deck => {
     if (currentUser === null) {
@@ -27,6 +27,10 @@ const DeckList = props => {
     } else {
       const sampleWords = _.sampleSize(deck.cards, 3).map(card => card.word)
 
+      const handleDeckDelete = () => {
+        deleteDeck(deck.id)
+      }
+
       return (
         <DeckTile
           key={deck.id}
@@ -35,6 +39,7 @@ const DeckList = props => {
           sampleWords={sampleWords}
           deckUser={deck.user}
           currentUser={currentUser}
+          handleDeckDelete={handleDeckDelete}
         />
       )
     }
