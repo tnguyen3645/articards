@@ -29,6 +29,15 @@ class Api::V1::DecksController < ApiController
     end
   end
 
+  def destroy
+    deck = Deck.find(params[:id])
+    if deck.destroy
+      render json: Deck.all
+    else
+      render json: { error: deck.errors.full_messages }
+    end
+  end
+
   private
 
   def deck_params

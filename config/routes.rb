@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :decks, only: [:index, :show, :new, :create]
+      resources :decks, only: [:index, :show, :new, :create, :destroy]
       resources :cards, only: [:index, :create]
       resources :games, only: [:create, :show]
       get "users/current" => "users#current"

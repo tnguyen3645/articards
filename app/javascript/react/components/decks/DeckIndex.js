@@ -35,12 +35,38 @@ const DeckIndex = props => {
     return decks.filter(deck => deck.name.toLowerCase().includes(searchQuery.toLowerCase()))
   }
 
+  const deleteDeck = async deckId => {
+    try {
+      const response = await fetch(`api/v1/decks/${deckId}`,
+      {
+        credentials: "same-origin",
+        method: "DELETE",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        }
+      }
+    )
+    if (!response.ok) {
+      const errorMessage = `${response.status} (${response.statusText})`
+      throw new Error(errorMessage)
+    }
+    const responseBody = await response.json()
+    setDecks(responseBody.decks)
+    getCurrentUser().then((userData) => {
+      setUserDecks(userData.decks)
+    })
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
   let userMessage
   let createButton
   if (currentUser === null) {
     userMessage = <p className="user-message center">Log in to see and create your own word decks!</p>
   } else {
-    userMessage = <DeckList decks={userDecks} currentUser={currentUser}/>
+    userMessage = <DeckList decks={userDecks} currentUser={currentUser} deleteDeck={deleteDeck}/>
     createButton = <Link to="/decks/new" className="action-button">Create a new deck!</Link>
   }
 
