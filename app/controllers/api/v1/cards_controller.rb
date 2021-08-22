@@ -16,7 +16,7 @@ class Api::V1::CardsController < ApiController
       end
       render json: card
     else
-      render json: { error: card.errors.full_messages.to_sentence, status: 400}, status: 400
+      render json: { error: card.errors.full_messages.to_sentence, status: 400}
     end
   end
 
