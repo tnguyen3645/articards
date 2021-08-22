@@ -46,7 +46,11 @@ export const postCard = async (formPayload) => {
       throw new Error(errorMessage)
     }
     const responseBody = await response.json()
-    return responseBody.card
+    if (responseBody.error != undefined) {
+      return responseBody
+    } else {
+      return responseBody.card
+    }
   } catch (error) {
     console.error(`Error in Fetch: ${error.message}`)
   }

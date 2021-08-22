@@ -4,5 +4,5 @@ class Card < ApplicationRecord
   has_many :card_decks
   has_many :decks, through: :card_decks
 
-  validates :word, presence: true
+  validates :word, presence: true, uniqueness: true
 end
