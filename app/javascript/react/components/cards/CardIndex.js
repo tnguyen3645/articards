@@ -4,12 +4,14 @@ import CardList from "./CardList"
 import NewCardForm from "./NewCardForm"
 import { fetchCards, postCard } from "../../apiClient"
 import getCurrentUser from "../../getCurrentUser"
+import ErrorList from "../ErrorList"
 
 const CardIndex = props => {
   const [currentUser, setCurrentUser] = useState(null)
   const [cards, setCards] = useState([])
   const [userCards, setUserCards] = useState([])
   const [searchQuery, setSearchQuery] = useState("")
+  const [errors, setErrors] = useState({})
 
   useEffect(() => {
     fetchCards().then((parsedCardData) => {
@@ -28,8 +30,19 @@ const CardIndex = props => {
 
   const submittedHandler = card => {
     postCard(card).then((parsedCardData) => {
-      setCards(cards => cards.concat(parsedCardData))
-      setUserCards(cards => cards.concat(parsedCardData))
+      if (parsedCardData.error != undefined) {
+        const validationFields = ["word"]
+        validationFields.forEach(field => {
+          setErrors({
+            ...errors,
+            [field]: "already exists"
+          })
+        })
+      } else {
+        setCards(cards => cards.concat(parsedCardData))
+        setUserCards(cards => cards.concat(parsedCardData))
+        setErrors({})
+      }
     })
   }
 
@@ -60,6 +73,7 @@ const CardIndex = props => {
               <p className="search__title">Search for a word card</p>
               <input className="search__input" type="text" placeholder="Search" onChange={handleSearchInputChange}></input>
             </div>
+            <ErrorList errors={errors} />
             {cardForm}
           </div>
           <div className="cell small-12 medium-8">

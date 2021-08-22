@@ -79,5 +79,23 @@ RSpec.describe Api::V1::CardsController, type: :controller do
       expect(returned_json["card"]).to_not be_kind_of(Array)
       expect(returned_json["card"]["word"]).to eq "best"
     end
+
+    it "returns an error if the card already exists" do
+      post_json = {
+        card: {
+          word: "cat"
+        }
+      }
+
+      post(:create, params: post_json, format: :json)
+      returned_json = JSON.parse(response.body)
+
+      expect(response.status).to eq 400
+      expect(response.content_type).to eq("application/json")
+
+      expect(returned_json["error"]).to eq("Word has already been taken")
+      expect(returned_json["status"]).to eq 400
+    end
+
   end
 end
