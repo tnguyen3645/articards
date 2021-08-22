@@ -90,7 +90,6 @@ RSpec.describe Api::V1::CardsController, type: :controller do
       post(:create, params: post_json, format: :json)
       returned_json = JSON.parse(response.body)
 
-      expect(response.status).to eq 400
       expect(response.content_type).to eq("application/json")
 
       expect(returned_json["error"]).to eq("Word has already been taken")
