@@ -43,7 +43,6 @@ Articards is a fully functional tool for speech therapy online sessions, however
 Fixes are in progress for these known issues:
 
 - When joining an in progress game, a user needs to click on a card before the game board loads.
-- There can be duplicate cards and decks.
 
 ### Other Notes
 - Search Bar template from [Mihael Tomić](https://codepen.io/mihaeltomic)
